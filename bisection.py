@@ -1,13 +1,20 @@
-#Bisection Method for root finding.
 import math
 def F(x):
-    val = x**6 - x - 1.0
+    val = x**3 + 4*(x**2) - 10 
     return val
 
 def SameSign(a,b):
     neg = ((a < 0) and (b < 0)) #or ((b < 0) and (a < 0))
     pos = (a >= 0) and (b >= 0) #or ((b >= 0) and (a >= 0))
     return (neg or pos)
+
+def sign(a):
+    if a < 0:
+        return -1
+    elif a == 0:
+        return 0
+    else:
+        return 1
 def Bisection(a1,b1,TOL,N):
     val = []
     x = []
@@ -26,7 +33,7 @@ def Bisection(a1,b1,TOL,N):
         x.append("x{} = {}".format(i,c))
         if math.fabs(delta) < TOL:
             return fc, c, val, x
-        if SameSign(fc,fa):
+        if sign(fc) * sign(fa) > 0:
             a = c
             fa = fc
         else:
