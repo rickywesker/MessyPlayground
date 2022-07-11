@@ -17,7 +17,7 @@ err = 0.00005
 for i in range(2000):
     x = g(x0)
     if math.fabs(x - x0) < err:
-        print(x,"iteration {}".format(i))
+        print(x, f"iteration {i}")
         break
     else:
         x0 = x

@@ -1,7 +1,6 @@
 import math
 def F(x):
-    val = x**3 + 4*(x**2) - 10 
-    return val
+    return x**3 + 4*(x**2) - 10
 
 def SameSign(a,b):
     neg = ((a < 0) and (b < 0)) #or ((b < 0) and (a < 0))
@@ -29,8 +28,8 @@ def Bisection(a1,b1,TOL,N):
         delta = delta / 2
         c = a + delta
         fc = F(c)
-        val.append("F(x{}) = {}".format(i,fc))
-        x.append("x{} = {}".format(i,c))
+        val.append(f"F(x{i}) = {fc}")
+        x.append(f"x{i} = {c}")
         if math.fabs(delta) < TOL:
             return fc, c, val, x
         if sign(fc) * sign(fa) > 0:
