@@ -7,18 +7,14 @@ from collections import Counter
 f = open('oneoverpi.txt','r')
 num = '3'
 freq = []
-longstr = ''
 #data preprocessing
 lines = f.readlines()
-for line in lines[1:]:
-    longstr += line
-
+longstr = ''.join(lines[1:])
 start_idx = -1
 for idx, digit in enumerate(longstr):
-    if digit == num and start_idx != -1 :
-        freq.append(idx - start_idx - 1)
-        start_idx = idx
-    elif digit == num and start_idx == -1:
+    if digit == num:
+        if start_idx != -1:
+            freq.append(idx - start_idx - 1)
         start_idx = idx
 freq_arr = sorted(np.array(freq))
 freq_cnt = dict(Counter(freq_arr))
